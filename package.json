@@ -15,13 +15,11 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.4.1",
-    "@humanwhocodes/gitignore-to-minimatch": "1.0.2",
     "@proofdict/textlint-rule-proofdict": "3.1.2",
     "@tsconfig/bun": "1.0.1",
     "@tsconfig/strictest": "2.0.2",
     "bun-types": "1.0.21",
     "cspell": "8.3.2",
-    "eslint-gitignore": "0.1.0",
     "ignore-sync": "7.0.1",
     "markdownlint-cli2": "0.11.0",
     "npm-run-all2": "6.1.1",
