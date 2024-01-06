@@ -3,9 +3,6 @@
 		"preset-ja-technical-writing": true,
 		"preset-ja-spacing": true,
 		"preset-smarthr": true,
-		"prh": {
-			"rulePaths": ["./dict/WEB+DB_PRESS.yml"]
-		},
 		"@proofdict/proofdict": {
 			"dictURL": "https://azu.github.io/proof-dictionary/"
 		}
