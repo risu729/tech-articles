@@ -1,0 +1,14 @@
+# ignore files formatted by biome
+*.js
+*.mjs
+*.cjs
+*.ts
+*.mts
+*.cts
+*.jsx
+*.tsx
+*.json
+*.jsonc
+
+# ignore dictionary files
+dict/

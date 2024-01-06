@@ -1,0 +1,40 @@
+{
+	"files.autoSave": "afterDelay",
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+
+	// ref: https://biomejs.dev/reference/vscode/
+	"editor.codeActionsOnSave": {
+		"quickfix.biome": "explicit",
+		"source.organizeImports.biome": "explicit",
+		"source.fixAll.markdownlint": "explicit"
+	},
+	"biome.rename": true,
+
+	// ref: https://biomejs.dev/internals/language-support/
+	"[javascript][typescript][javascriptreact][typescriptreact][json][jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+
+	"[markdown]": {
+		"editor.wordWrap": "on",
+		"editor.unicodeHighlight.ambiguousCharacters": true,
+		"editor.unicodeHighlight.invisibleCharacters": true,
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	"textlint.autoFixOnSave": true,
+
+	"[toml]": {
+		"editor.defaultFormatter": "tamasfe.even-better-toml"
+	},
+
+	"files.associations": {
+		"*ignore-sync": "ini"
+	},
+
+	// disable to use type definitions in node_modules
+	"typescript.disableAutomaticTypeAcquisition": true,
+
+	"editor.defaultColorDecorators": true
+}

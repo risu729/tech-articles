@@ -1,0 +1,35 @@
+name: Check
+
+on:
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  biome:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@9b21598af8d4dfc302e5a30250007de0fda92acc # v1.1.1
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Check
+        run: bun check
+
+      - name: Commit and Push
+        run: |
+          git add --intent-to-add .
+          if ! git diff --exit-code --quiet
+          then
+            git config user.name github-actions[bot]
+            git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+            git add --all
+            git commit --author=. --message="fix: auto-fix"
+            git push
+          fi

@@ -1,0 +1,13 @@
+{
+	"recommendations": [
+		"zenn.zenn-preview",
+		"oven.bun-vscode",
+		"biomejs.biome",
+		"esbenp.prettier-vscode",
+		"tamasfe.even-better-toml",
+		"streetsidesoftware.code-spell-checker",
+		"taichi.vscode-textlint",
+		"davidanson.vscode-markdownlint",
+		"github.vscode-github-actions"
+	]
+}
