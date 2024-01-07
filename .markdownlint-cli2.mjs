@@ -2,9 +2,9 @@
 export default {
 	config: {
 		extends: "markdownlint/style/prettier",
+		"single-h1": false,
 		"no-bare-urls": false,
 	},
-	showFound: true,
 	fix: true,
 	globs: ["**/*.md"],
 	ignores: ["node_modules"],

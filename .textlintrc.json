@@ -1,10 +1,32 @@
 {
 	"rules": {
-		"preset-ja-technical-writing": true,
-		"preset-ja-spacing": true,
-		"preset-smarthr": true,
+		"preset-ja-technical-writing": {
+			// disable rules configured in preset-smarthr
+			"sentence-length": false,
+			"ja-no-mixed-period": false,
+			"no-double-negative-ja": false,
+			"no-doubled-conjunctive-particle-ga": false,
+			"no-hankaku-kana": false,
+			"ja-no-abusage": false,
+			"ja-no-redundant-expression": false,
+			"no-unmatched-pair": false,
+			// disable because prh in preset-smarthr handles it
+			"no-exclamation-question-mark": false
+		},
+		"preset-smarthr": {
+			"ja-no-mixed-period": {
+				"allowPeriodMarks": ["…"],
+				"allowEmojiAtEnd": true
+			}
+		},
 		"@proofdict/proofdict": {
 			"dictURL": "https://azu.github.io/proof-dictionary/"
+		}
+	},
+	"filters": {
+		"comments": true,
+		"allowlist": {
+			"allow": ["/::::*(details .+|message|message alert)$/m", "/^::::*$/m"]
 		}
 	}
 }

@@ -30,7 +30,8 @@
 	},
 
 	"files.associations": {
-		"*ignore-sync": "ini"
+		"*ignore-sync": "ini",
+		".textlintrc.json": "jsonc"
 	},
 
 	// disable to use type definitions in node_modules

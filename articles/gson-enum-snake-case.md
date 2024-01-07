@@ -8,9 +8,11 @@ published: true
 
 # はじめに
 
-JavaでGsonを用いてjsonへシリアライズする際、`SCREAMING_SNAKE_CASE` のEnum定数(Enum Constant)を、jsonで一般的な形式である `snake_case` に変換したいことがあります。
-実際にGsonのJavadocにも例として記載されているのですが、シリアライズ/デシリアライズ時の名前を指定できる`@SerializedName` アノテーションに対応していなかったので対応させたものを残しておきます。
+JavaでGsonを用いてjsonを扱う際、`SCREAMING_SNAKE_CASE` のEnum定数(Enum Constant)を、jsonで一般的な形式である `snake_case` に変換したいことがあります。
+実際に下のGsonのJavadocにも例として記載されていますが、シリアライズ/デシリアライズ時の名前を指定できる`@SerializedName` アノテーションに対応していなかったので対応させました。
 また、`Enum::toString` をオーバーライドしていても問題ないようにもしています。
+
+https://javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/TypeAdapterFactory.html
 
 # コード
 
@@ -48,7 +50,7 @@ final class SnakeCaseEnumTypeAdapterFactory implements TypeAdapterFactory {
     List<T> enumConstants = List.of(rawType.getEnumConstants());
 
     Map<T, SerializedName> serializedNameMap = enumConstants.stream()
-        // mapMultiでアノテーションが存在する場合のみStreamに追加 
+        // mapMultiでアノテーションが存在する場合のみStreamに追加
         .<Map.Entry<T, SerializedName>>mapMulti((constant, consumer) -> {
           try {
             // Enum定数に付与されている@SerializedNameアノテーションを取得
@@ -98,20 +100,20 @@ final class SnakeCaseEnumTypeAdapterFactory implements TypeAdapterFactory {
 
 ## シリアライズ (Enum定数→json)
 
-以下の順に優先してjsonへと変換します。
+次の順に優先してjsonへと変換します。
 
 1. [`@SerializedName`](https://javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/annotations/SerializedName.html) の `value`
 2. `Enum::name`
 
 ## デシリアライズ (json→Enum定数)
 
-以下全てをEnum定数に変換します。
+以下すべてをEnum定数に変換します。
 
 - `Enum::name`
 - [`@SerializedName`](https://javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/annotations/SerializedName.html) の `value`
 - [`@SerializedName`](https://javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/annotations/SerializedName.html) の `alternate`
 
-名前が複数のEnum定数で衝突した場合の動作は不確かですが、Gson自体の `@SerializedName` も同様に不確かなのでおそらく大丈夫なのでしょう。
+名前が複数のEnum定数で衝突した場合の動作は不確かですが、Gson本体の `@SerializedName` も同様に不確かなので気にしません。
 
 # 解説
 
@@ -120,7 +122,7 @@ final class SnakeCaseEnumTypeAdapterFactory implements TypeAdapterFactory {
 
 今回は `Enum` が渡された場合にEnum定数とjsonを変換する `TypeAdapter` を返すようにします。
 `null` については、`TypeAdapter::nullsafe` を用いているので特に気にせずとも良いです。
-また、Javadocにも記載されている通り、リフレクションなどの負荷の大きい処理は `TypeAdapter` のインスタンスを生成するときに行うべきなので、変換するための `Map` を先に生成します。
+また、Javadocにも記載されているとおり、リフレクションなどの負荷の大きい処理は `TypeAdapter` のインスタンスを生成するときに行なうべきなので、変換するための `Map` を先に生成します。
 
 ## Enum へのキャストについて
 
@@ -129,8 +131,8 @@ final class SnakeCaseEnumTypeAdapterFactory implements TypeAdapterFactory {
 ```
 
 Enum定数の名前を取得するときに `unchecked` & `rawtypes` の警告が出るにもかかわらず、このような方法を用いています。
-`unchecked` は、 `constant` の型が仮型引数 `T` になっており、キャストしないと呼び出せません。
-`rawtypes` は、Enumの型定義が `Enum<E extends Enum<E>>` となっているので、キャストする際に `Enum<T>` とすると `T` が `Enum` を継承しているかわからなくコンパイルエラーとなります。
+`unchecked` は、 `constant` の型が仮型引数 `T` になっており、キャストしないと呼び出せないためです。
+`rawtypes` は、Enumの型定義が `Enum<E extends Enum<E>>` となっているので、キャストする際に `Enum<T>` とすると `T` が `Enum` を継承しているかわからないことが原因です。
 Enumでない場合は先に `return` しているので問題ないのですが、あまり綺麗ではないので仮型引数をもう少し自由に操作したいですね…
 
 # 簡易ver

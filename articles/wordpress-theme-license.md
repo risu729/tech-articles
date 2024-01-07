@@ -12,7 +12,7 @@ published: true
 この記事は法学なんもわからん一般人によって書かれています。法的に間違ったことが書かれている可能性も多分にありますし、間違っていても責任は取れません。
 :::
 
-WordPress テーマを開発するにあたり、ライセンスについて調べていたのですがかなり複雑だったのでまとめました。
+WordPressテーマを開発するにあたり、ライセンスについて調べていたのですがかなり複雑だったのでまとめました。
 
 ネットの情報を元にしており、法律家に相談したわけではありません。何か小さなことでも間違っていたら/他の解釈があったら教えていただけると嬉しいです。
 
@@ -25,16 +25,17 @@ https://wordpress.org/about/license/
 
 **GNU General Public License** の略です。
 
-Free Software License で、自由なソフトウェアを広めることを目的としています。GPL汚染という言葉もあるように、GPLライセンスのソフトウェアを使ったソフトウェア(派生著作物, derivative work)はGPLで再配布しなければなりません。
+Free Software Licenseで、自由なソフトウェアを広めることを目的としています。
+GPL汚染という言葉もあるように、GPLライセンスのソフトウェアを使ったソフトウェア(派生著作物, derivative work)はGPLで再配布しなければなりません。
 
 https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
-GPL について詳しくは以下のサイトがわかりやすくおすすめです。
+GPLについて詳しくは次のサイトがわかりやすくおすすめです。
 https://wa3.i-3-i.info/word13200.html
 
 # WordPress テーマは派生著作物なのか？
 
-派生著作物です。WordPress 公式がそう言及しています。
+派生著作物です。WordPress公式がそう言及しています。
 
 > Part of this license outlines requirements for derivative works, such as plugins or themes. Derivatives of WordPress code inherit the GPL license.
 
@@ -42,7 +43,12 @@ https://wa3.i-3-i.info/word13200.html
 
 https://wordpress.org/about/license/
 
-ただし、以下のように法的にグレーであるとも示されています。個人的には書かれている通り、グレーな部分を突いてまでGPLにしたくないのなら WordPress を使わない方がいいと思いますが…
+<!-- textlint-disable ja-technical-writing/ja-no-weak-phrase -->
+
+ただし、次のとおり法的にグレーであるとも示されています。
+個人的にはグレーな部分を突いてまでGPLにしたくないのならWordPressを使わない方がいいと思いますが…
+
+<!-- textlint-enable ja-technical-writing/ja-no-weak-phrase -->
 
 > There is some legal grey area regarding what is considered a derivative work, but we feel strongly that plugins and themes are derivative work and thus inherit the GPL license. If you disagree, you might want to consider a non-GPL platform such as Serendipity (BSD license) instead.
 
@@ -56,28 +62,33 @@ https://wordpress.org/about/license/
 
 https://wordpress.org/news/2009/07/themes-are-gpl-too/
 
-画像とCSSは WordPress のプログラムから直接読み取られるわけではなく、単にデータとして公開されているのでGPLにおける派生著作物にあたらないという解釈が示されています。
+画像とCSSはWordPressのプログラムから直接読み取られるわけではなく、単にデータとして公開されているのでGPLにおける派生著作物にあたらないという解釈が示されています。
 
-> In conclusion, the WordPress themes supplied contain elements that are derivative of WordPress’s copyrighted code. These themes, being collections of distinct works (images, CSS files, PHP files), need not be GPL-licensed as a whole. Rather, the PHP files are subject to the requirements of the GPL while the images and CSS are not. Third-party developers of such themes may apply restrictive copyrights to these elements if they wish.
+<!-- textlint-disable ja-technical-writing/max-comma -->
+
+> In conclusion, the WordPress themes supplied contain elements that are derivative of WordPress's copyrighted code. These themes, being collections of distinct works (images, CSS files, PHP files), need not be GPL-licensed as a whole. Rather, the PHP files are subject to the requirements of the GPL while the images and CSS are not. Third-party developers of such themes may apply restrictive copyrights to these elements if they wish.
+
+<!-- textlint-enable ja-technical-writing/max-comma -->
 
 > WordPressの著作権で保護されたコードから派生した要素が含まれているのテーマは、異なる著作物(画像、CSSファイル、PHPファイル)の集合体であり、全体としてGPLライセンスを適用する必要はありません。PHPファイルはGPLライセンスの対象になりますが、画像とCSSはなりません。サードパーティの開発者が望むなら、これらに制限的な著作権を適用することができます。
 
-ただし、WordPress.org 公式のプラグイン/テーマディレクトリで配布するためには、100%GPL、つまり画像やCSSもGPLライセンスで配布されている必要があります。(GPLでないと審査に通りません。)
+ただし、WordPress.org公式のプラグイン/テーマディレクトリで配布するためには、100%GPL、つまり画像やCSSもGPLライセンスで配布されている必要があります。(GPLでないと審査に通りません。)
 
-以下の記事で日本語で解説されています。
+次の記事で詳しく解説されています。
+
 https://ja.wordpress.org/about/license/100-percent-gpl/
 
 # 公開は義務ではない
 
 https://www.gnu.org/licenses/gpl-faq.en.html#GPLRequireSourcePostedPublic
 
-公開は、そのプログラムを渡す際に義務が発生します。なので、有償でテーマを販売した場合でもそのテーマはGPLになるので、購入者は自由に(有償でも無償でも)再配布できます。
+公開は、そのプログラムを渡す際に義務が発生します。
+なので、有償でテーマを販売した場合でもそのテーマはGPLになるので、購入者は自由に(有償、無償問わず)再配布できます。
 
 ただ、例えばテーマを特定のWebサイトのために開発した場合は、その運営者のみに渡すことになるので、GPLライセンスでもその運営者が再配布しなければ公開はされません。
-
 もし自分(もしくは所属している組織)でテーマを使用するなら、そもそもプログラムを渡すことがないので、公開する義務ももちろんありません。
 
-また、テーマは WordPress の一部としてサーバー上で動作します。この際、ソフトウェア自体がWebサイトの閲覧者に提供されているわけではないので、閲覧者に対しての公開義務は発生しません。
+また、テーマはWordPressの一部としてサーバー上で動作します。この際、ソフトウェア自体がWebサイトの閲覧者に提供されているわけではないので、閲覧者に対しての公開義務は発生しません。
 
 # GPL違反のテーマがたくさんある件
 
@@ -87,7 +98,7 @@ https://capitalp.jp/2018/02/07/how-is-gpl-busness/
 
 # おまけ
 
-WordPress とあんまり関係ないです。
+WordPressとはあまり関係ありません。
 
 ## AGPL について
 
@@ -101,6 +112,6 @@ https://www.gnu.org/licenses/why-affero-gpl.en.html
 
 ## GPL のバージョンについて
 
-WordPress など、GPLv2 or later として配布されている場合は、GPLv3 を用いても問題ありません。特許に関する部分が明確に示されているようですが、WordPressテーマにおいては関係ないかもしれません。私は新しいもの好きなのでv3にしています()
+WordPressなど、GPLv2 or laterとして配布されている場合は、GPLv3を用いても問題ありません。特許に関する部分が明確に示されているようですが、WordPressテーマにおいては関係ないはずです。私は新しいもの好きなのでv3にしています。
 
 https://www.gnu.org/licenses/gpl-faq.en.html#v2v3Compatibility
