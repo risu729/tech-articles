@@ -61,7 +61,11 @@ https://github.com/eslint/eslint/pull/16844
 
 > Warning: The 'eslint:recommended' string configuration is deprecated and will be replaced by the @eslint/js package's 'recommended' config.
 
-Docsにこの `predefined-configurations` についての章もあります。
+ESLint v9から古い記法は使えなくなります。
+
+https://eslint.org/blog/2023/11/whats-coming-in-eslint-9.0.0/#flat-config-now-the-default-and-has-some-changes
+
+次のDocsに `predefined-configurations` について記載されています。
 
 https://eslint.org/docs/latest/use/configure/configuration-files-new#using-predefined-configurations
 
