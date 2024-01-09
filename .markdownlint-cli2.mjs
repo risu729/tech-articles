@@ -1,4 +1,4 @@
-// biome-ignore lint/nursery/noDefaultExport:
+// biome-ignore lint/style/noDefaultExport:
 export default {
 	config: {
 		extends: "markdownlint/style/prettier",
