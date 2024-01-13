@@ -24,16 +24,21 @@ https://github.com/nodejs/node/pull/48740
 ```js
 const __dirname = import.meta.dir;
 const __filename = import.meta.path;
+
+// or
+
+const __dirname = import.meta.dirname;
+const __filename = import.meta.filename;
 ```
 
 `import.meta.file` はファイル名であり、ファイルへのパスではないので注意が必要です。
 
 https://bun.sh/docs/api/import-meta
 
-Node.jsとの互換性が無いのでIssueを立てたところ、PRを出してくださった方がいました。
-ただ、今のところまだマージされていません。
+次のPRで[v1.0.23](https://github.com/oven-sh/bun/releases/tag/bun-v1.0.23)からNode.jsとの互換性のため、`dirname` と `filename` もエイリアスとして追加されました。
+個人的には、`import.meta.filename` と `import.meta.file` が異なることは混乱するので、互換性が必要なければ `import.meta.path` を使いたいです。
 
-// TODO: link of pr
+https://github.com/oven-sh/bun/pull/8127
 
 :::message alert
 BunではCJSも扱えるので、`__dirname`, `__filename` もそのまま使えますが、非推奨(deprecated)になっているので使うべきではありません。
