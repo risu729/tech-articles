@@ -162,4 +162,4 @@ https://github.com/okonet/lint-staged#Configuration
 どういうわけか2022年の記事にも書かれていたりしましたが、これは(v5以上を使っている限り)無意味です。
 
 詳しくは次の開発者の書いた記事を読んでください。
-https://blog.typicode.com/husky-git-hooks-javascript-config/
+https://blog.typicode.com/posts/husky-git-hooks-javascript-config/
