@@ -11,8 +11,8 @@ published: true
 huskyのアプデの影響か古い情報が多く、適当にネットの情報を鵜呑みにしたら動かなかったので書きました。
 
 :::message alert
-この記事は2024/01時点での情報です。
-huskyはv8.0.3, lint-stagedはv15.2.0となっています。
+この記事は2024/01/25時点での情報です。
+huskyはv9.0.1, lint-stagedはv15.2.0となっています。
 どちらもセマンティックバージョニングなので、メジャーバージョンが同じである限りはおそらく問題なく使えるはずです。
 :::
 
@@ -21,7 +21,7 @@ huskyはv8.0.3, lint-stagedはv15.2.0となっています。
 husky + lint-stagedのインストールは以下をコピーアンドペーストして実行してください。
 
 ```shell
-npx husky-init && npm install && npm install --save-dev lint-staged && npx husky set .husky/pre-commit "npx lint-staged"
+npm install --save-dev husky lint-staged && npx husky init && echo "npx lint-staged" > .husky/pre-commit
 ```
 
 lint-stagedの設定は、READMEの #Configurationを読みましょう。
@@ -48,6 +48,8 @@ huskyとは、Gitフックで任意のプログラムを実行するためのnpm
 
 https://github.com/typicode/husky
 
+https://typicode.github.io/husky/
+
 ## lint-staged とは
 
 lint-stagedとは、Gitでステージ上の、つまり変更されたファイルに対してのみlintやformatをするためのnpmライブラリです。
@@ -60,24 +62,29 @@ https://github.com/okonet/lint-staged
 `git init` と `npm init` はすでに実行されているものとします。
 :::
 
-1. `npx husky-init`
+1. `npm install --save-dev husky lint-staged`
+
+`husky`, `lint-staged` を `devDependencies` に追加します。
+
+```shell
+npm install --save-dev husky lint-staged
+```
+
+2. `npx husky init`
 
 ドキュメントにあるとおり、以下を実行します。
 
-https://typicode.github.io/husky/#/?id=automatic-recommended
+https://typicode.github.io/husky/get-started.html#install
 
 ```shell
-npx husky-init
+npx husky init
 ```
 
 `package.json` に次の通り追加されます。
 
 ```diff json:package.json
-+ "devDependencies": {
-+   "husky": "^8.0.0"
-+ },
 + "scripts": {
-+   "prepare": "husky install"
++   "prepare": "husky"
 + }
 ```
 
@@ -87,48 +94,25 @@ npx husky-init
 
 https://docs.npmjs.com/cli/v9/using-npm/scripts#life-cycle-scripts
 
-また、`.husky` ディレクトリも作成されます。
-この中身は基本的に触らない方が良いです。(`pre-commit`は編集してもいいのですが、コマンドで管理できるのでそちらの方が安全です。)
+また、`.husky/pre-commit` が作成されます。
+このファイルは、`pre-commit` フックで実行されるスクリプトを記述するためのものです。
+他のフックについても、`.husky/` 以下にファイルを作成することで設定できます。(`commit-msg` など)
 
-2. `npm install`
+4. `echo "npx lint-staged" > .husky/pre-commit`
 
-まだ依存関係が `package.json` に記述されただけなので、実際にインストールします。
-前述の通り、`prepare` の `husky install` も自動で実行されます。
-
-```shell
-npm install
-```
-
-3. `npm install --save-dev lint-staged`
-
-`lint-staged` を追加します。
+`pre-commit` フックでlint-stagedが実行されるように設定します。
+VS Codeなどから手動で編集することもできます。
 
 ```shell
-npm install --save-dev lint-staged
+echo "npx lint-staged" > .husky/pre-commit
 ```
-
-4. `npx husky set .husky/pre-commit "npx lint-staged"`
-
-`.husky/pre-commit` にlint-stagedを実行するよう設定します。
-手動で編集しても問題はないですが、安全のためコマンドで編集することをおすすめします。
-
-```shell
-npx husky set .husky/pre-commit "npx lint-staged"
-```
-
-これによって、`.husky/pre-commit` が次のように編集され、`pre-commit` フックでlint-stagedが実行されるようになります。
 
 ```diff shell:.husky/pre-commit
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 - npm test
 + npx lint-staged
 ```
 
-:::message
-`~ husky add ~` としている解説もありますが、`npm test` を上書きするために `~ husky set ~` を用いています。
-:::
+`npm test` は例として追加されているだけなので、削除して問題ありません。
 
 以上でhusky + lint-stagedのインストールは完了です。
 
@@ -148,7 +132,9 @@ npx husky set .husky/pre-commit "npx lint-staged"
 
 https://github.com/okonet/lint-staged#Configuration
 
-# もう動かない方法
+# もう動かない・必要ない方法
+
+## `package.json#hooks`
 
 ```json:package.json
 "husky": {
@@ -163,3 +149,25 @@ https://github.com/okonet/lint-staged#Configuration
 
 詳しくは次の開発者の書いた記事を読んでください。
 https://blog.typicode.com/posts/husky-git-hooks-javascript-config/
+
+## `npx husky-init`
+
+2024/01/25のhusky v9で、`npx husky-init` は使われなくなりました。
+`devDependencies` に `husky` を追加してから、`npx husky init` を実行する必要があります。
+
+## `npx husky set`, `npx husky add`
+
+2024/01/25のhusky v9で、`npx husky set`, `npx husky add` は使われなくなりました。
+手動で `.husky/` 内のファイルを編集する必要があります。
+
+また、husky v8までは、次のようなshebangとスクリプトがファイルの先頭にありましたが、husky v9からは不要になりました。
+
+```shell:.husky/pre-commit
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+```
+
+## `git add --chmod=+x .husky/pre-commit`
+
+husky v8まで、Windowsでは `git add --chmod=+x .husky/pre-commit` として、`.husky/pre-commit` を実行可能にする必要がありました。
+2024/01/25のhusky v9で、`.husky/` 内のファイルは実行可能でなくても問題なくなったので、これは不要です。
