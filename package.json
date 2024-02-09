@@ -17,7 +17,7 @@
     "@biomejs/biome": "1.5.3",
     "@proofdict/textlint-rule-proofdict": "3.1.2",
     "@tsconfig/bun": "1.0.2",
-    "@tsconfig/strictest": "2.0.2",
+    "@tsconfig/strictest": "2.0.3",
     "@types/bun": "1.0.5",
     "cspell": "8.3.2",
     "ignore-sync": "7.0.1",
