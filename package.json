@@ -18,7 +18,7 @@
     "@proofdict/textlint-rule-proofdict": "3.1.2",
     "@tsconfig/bun": "1.0.4",
     "@tsconfig/strictest": "2.0.3",
-    "@types/bun": "1.0.6",
+    "@types/bun": "1.0.7",
     "cspell": "8.4.1",
     "ignore-sync": "7.0.1",
     "markdownlint-cli2": "0.12.1",
