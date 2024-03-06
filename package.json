@@ -30,7 +30,7 @@
     "textlint-rule-preset-ja-spacing": "2.3.0",
     "textlint-rule-preset-ja-technical-writing": "10.0.1",
     "textlint-rule-preset-smarthr": "1.28.0",
-    "typescript": "5.3.3",
+    "typescript": "5.4.2",
     "zenn-cli": "0.1.153"
   }
 }
