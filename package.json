@@ -31,6 +31,6 @@
 		"textlint-rule-preset-ja-technical-writing": "10.0.1",
 		"textlint-rule-preset-smarthr": "1.30.0",
 		"typescript": "5.4.5",
-		"zenn-cli": "0.1.153"
+		"zenn-cli": "0.1.154"
 	}
 }
