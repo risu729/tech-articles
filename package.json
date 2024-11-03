@@ -19,7 +19,7 @@
 		"@tsconfig/bun": "1.0.7",
 		"@tsconfig/strictest": "2.0.5",
 		"@types/bun": "1.1.13",
-		"cspell": "8.15.6",
+		"cspell": "8.15.7",
 		"ignore-sync": "7.0.1",
 		"markdownlint-cli2": "0.14.0",
 		"npm-run-all2": "7.0.1",
