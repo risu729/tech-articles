@@ -21,7 +21,7 @@
 		"@types/bun": "1.1.14",
 		"cspell": "8.16.1",
 		"ignore-sync": "7.0.1",
-		"markdownlint-cli2": "0.15.0",
+		"markdownlint-cli2": "0.16.0",
 		"npm-run-all2": "7.0.1",
 		"prettier": "3.4.2",
 		"textlint": "14.4.0",
