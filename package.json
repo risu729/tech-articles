@@ -22,7 +22,7 @@
 		"cspell": "8.17.1",
 		"ignore-sync": "7.0.1",
 		"markdownlint-cli2": "0.16.0",
-		"npm-run-all2": "7.0.1",
+		"npm-run-all2": "7.0.2",
 		"prettier": "3.4.2",
 		"textlint": "14.4.0",
 		"textlint-filter-rule-allowlist": "4.0.0",
