@@ -23,7 +23,7 @@
 		"ignore-sync": "8.0.0",
 		"markdownlint-cli2": "0.17.2",
 		"npm-run-all2": "7.0.2",
-		"prettier": "3.5.0",
+		"prettier": "3.5.1",
 		"textlint": "14.4.2",
 		"textlint-filter-rule-allowlist": "4.0.0",
 		"textlint-filter-rule-comments": "1.2.2",
